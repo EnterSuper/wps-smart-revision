@@ -6,15 +6,17 @@
 
 [下载安装包](https://github.com/EnterSuper/wps-smart-revision/releases/tag/v1.3.0) · [快捷键教程](docs/SHORTCUTS.md) · [反馈问题](https://github.com/EnterSuper/wps-smart-revision/issues)
 
-![同一段文字的原文、改写和字词修订对照](docs/media/revision-example.png)
+![WPS 实际修订效果：正文增改、删除记录和加粗格式修订](docs/media/wps-03-result.png)
 
-*效果示意：使用插件的实际对齐算法生成。WPS 中的修订颜色和显示方式跟随你的审阅设置。*
+*Mac WPS 实际操作截图。正文标出新增和替换，右侧列出删除及加粗修订；作者信息已打码。*
 
 ## 怎么用
 
 **复制新段落 → 选中原文 → 智能粘贴。**
 
-![复制改写、选中原文、智能粘贴的三步操作示意](docs/media/smart-paste.gif)
+![WPS 实际操作：复制改写段落、选中原文、含格式智能粘贴](docs/media/wps-live-demo.gif)
+
+*由三张实际操作截图组成：复制带加粗的改写段落 → 选中原文 → 点击含格式智能粘贴。*
 
 在 WPS 顶部的“智能修订”中，选 **含格式智能粘贴**。从 WPS 复制的加粗、斜体、高亮等常用格式也会带过来；想沿用原稿格式，就选 **仅文字粘贴**。
 
