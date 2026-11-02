@@ -1,0 +1,33 @@
+name: Verify sources and installers
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+  windows-build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python build_windows.py
+      - shell: pwsh
+        run: ./qa/windows-installer.test.ps1 -Package ./dist/WPS-Smart-Revision-Windows-1.3.0
+      - shell: powershell
+        run: |
+          $compiler=Join-Path ([Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory()) 'csc.exe'
+          & $compiler /nologo /codepage:65001 /target:winexe /out:shortcuts/SmartRevisionKeys.exe /reference:System.Windows.Forms.dll /reference:System.Drawing.dll /reference:System.Web.Extensions.dll shortcuts/SmartRevisionKeys.cs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+  mac-build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sh shortcuts/build-mac.sh
+      - run: python3 build_mac.py

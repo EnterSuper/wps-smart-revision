@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'">
+  <title>智能修订 · 使用说明</title><link rel="stylesheet" href="panel.css"><script src="host.js"></script><script src="vendor/diff-browser.js"></script><script src="plan.js"></script><script src="rich.js"></script><script src="live.js"></script><script defer src="panel.js"></script>
+</head>
+<body><main>
+  <header class="masthead"><span class="app-icon"><img src="images/paste.svg" width="32" height="32" alt=""></span><div><h1>智能修订</h1><p>整段改写，逐处留痕</p></div><span class="local-badge">本地</span></header>
+  <section class="intro" aria-label="使用步骤">
+    <ol class="steps">
+      <li><span>1</span><div><strong>复制新段落</strong><p>复制你准备替换进去的文字。</p></div></li>
+      <li><span>2</span><div><strong>选中原段落</strong><p>在 WPS 正文中选中完整的一段。</p></div></li>
+      <li><span>3</span><div><strong>点击含格式智能粘贴</strong><p>入口在顶部的“智能修订”选项卡。</p></div></li>
+    </ol>
+    <div class="demo" aria-label="修订示例">本项目<del>拟</del><ins>计划</ins>于<del>2026</del><ins>2027</ins>年启动。</div><p class="demo-caption">相同文字保留，变化写成原生修订。</p>
+  </section>
+  <section class="mode-section" aria-labelledby="mode-heading"><h2 id="mode-heading">选择操作</h2>
+    <button type="button" class="mode-row" data-action="smartRichPaste"><img src="images/format.svg" alt=""><div><strong>含格式智能粘贴</strong><p>保留字体、加粗、斜体、高亮等常用格式，按字词对齐修订。</p></div><span class="tag">常用</span></button>
+    <button type="button" class="mode-row" data-action="smartPlainPaste"><img src="images/paste.svg" alt=""><div><strong>仅文字粘贴</strong><p>不导入来源格式，新文字继承原位置格式。</p></div></button>
+    <button type="button" class="mode-row" data-action="smartCompatibility"><img src="images/report.svg" alt=""><div><strong>本机自检</strong><p>Windows 首次使用前，验证修订和格式保留。</p></div></button>
+  </section>
+  <section class="status-card" aria-labelledby="status-heading"><div class="section-top"><h2 id="status-heading">当前状态</h2><button id="refresh-status" class="text-button" type="button">刷新</button></div>
+    <dl><div><dt>文档</dt><dd id="document-name">尚未读取</dd></div><div><dt>原生修订</dt><dd id="tracking-status">—</dd></div><div><dt>快捷键</dt><dd id="shortcut-status">从工具栏“开启快捷键”设置</dd></div></dl><p id="status-message" class="quiet" aria-live="polite"></p>
+  </section>
+  <div class="keyboard-row"><span><kbd data-modifier>⌘</kbd><kbd>Z</kbd> 撤销整次操作</span><span><kbd data-modifier>⌘</kbd><kbd>S</kbd> 保存文档</span></div>
+  <details class="limits"><summary>支持范围与使用提醒</summary><div><p>一次处理一段。若选区包含不支持的域、图片、批注或复杂修订，插件会提示停止；请以实际提示和测试报告为准。</p><p>同一段反复改写会以尚未接受的修订之前的文字重新对齐。已接受的修订成为新的比较基础。</p><p>插件不自动存档或上传内容。保存、自动保存及原生修订显示方式由 WPS 控制。修订模式请在 WPS“审阅”中设置。</p></div></details>
+  <footer><a href="qa/test-report.html" id="test-report-link">查看测试结果 <span aria-hidden="true">↗</span></a><span>范围、证据与已知限制</span></footer>
+</main></body></html>

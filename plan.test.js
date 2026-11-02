@@ -1,0 +1,3 @@
+const {test}=require('node:test');const assert=require('node:assert/strict');const {plan}=require('./plan');
+for(const [old,newer] of [['项目拟于2026年启动，重点研究数据治理。','项目计划于2027年启动，重点研究数据治理。'],['A good model.','A reliable model.'],['甲乙甲乙，丙丁。','甲乙甲，可靠的丙丁。'],['含😀内容','含😀新增内容'],['abc',''],['','中文'],['相同','相同']])test(old+' → '+newer,()=>{let value=old;const edits=plan(old,newer);for(const e of edits.slice().reverse())value=value.slice(0,e.start)+e.text+value.slice(e.end);assert.equal(value,newer);});
+test('unchanged Chinese sentence is not replaced',()=>{const a='本项目拟于2026年启动，重点研究多中心异构数据治理问题。';const b='本项目计划于2027年启动，重点研究多中心异构数据治理问题。';assert.ok(plan(a,b).every(e=>e.end<20));});

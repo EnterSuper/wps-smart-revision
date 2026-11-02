@@ -1,0 +1,12 @@
+node_modules/
+dist/
+__pycache__/
+.DS_Store
+*.pyc
+*.docx
+*.doc
+*.pdf
+*.log
+shortcuts/SmartRevisionKeys.app/Contents/MacOS/
+shortcuts/*.exe
+wps-smart-revision-*.json

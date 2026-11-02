@@ -1,0 +1,10 @@
+{
+  "name": "wps-smart-revision",
+  "version": "1.3.0",
+  "private": true,
+  "description": "Local, granular tracked paste for WPS Writer on macOS and Windows",
+  "license": "MIT",
+  "scripts": {"test": "node --test plan.test.js qa/review-tests.*.cjs qa/rich-mapping.test.cjs qa/windows-host.test.cjs qa/shortcuts.test.cjs qa/package.test.cjs"},
+  "devDependencies": {"xml-js": "1.6.11"},
+  "engines": {"node": ">=20"}
+}

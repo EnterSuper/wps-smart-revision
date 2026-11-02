@@ -1,0 +1,34 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Windows 11 安装与使用</title><style>body{max-width:760px;margin:48px auto;padding:0 24px;color:#25333f;font:15px/1.8 system-ui,'Microsoft YaHei',sans-serif}h1{font-size:27px}h2{font-size:18px;margin-top:32px}code{background:#edf3f1;padding:2px 5px;border-radius:4px}aside{background:#edf5f2;border-left:4px solid #28796d;padding:15px 20px}li{margin:9px 0}a{color:#28796d}.muted{color:#63717b}</style>
+<h1>智能修订 · Windows 11</h1><p class="muted">1.3.0 · 本地运行 · 无需 Python、Node.js 或管理员权限</p>
+<aside>这是为 Windows 11 和提供 JavaScript 加载项能力的最新版 WPS 桌面版制作的适配包。安装和算法已检查；尚未在真实 Windows WPS 上验收。请先运行包内自检，通过后再使用对应功能。</aside>
+<h2>包内文件与转发方式</h2>
+<p>直接把整个 <code>WPS-Smart-Revision-Windows-1.3.0.zip</code> 发到 Windows 电脑。收件人不需要 Mac，也不需要本项目源码。完整解压后，先看 <code>先看这里.txt</code> 或本页；不要只发送安装脚本，也不要移动或删除 <code>payload</code>、<code>payload.json</code> 和 <code>windows</code> 文件夹。</p>
+<ul><li><code>install-windows.cmd</code>：安装或更新。</li><li><code>uninstall-windows.cmd</code>：停用插件注册。</li><li><code>README.html</code>／<code>部署与使用教程.html</code>：本教程，浏览器离线打开即可阅读。</li><li><code>payload/qa/test-report.html</code>：验证范围与已知限制。</li></ul>
+<h2>安装</h2><ol><li>把整个 ZIP 复制到 Windows 电脑，右键选择“全部解压”。不要直接在压缩包里运行。</li><li>保存自己的文档并退出 WPS 文字、表格和演示。安装器遇到仍在运行的 WPS 会停止，不会强制关闭它。</li><li>双击 <code>install-windows.cmd</code>。安装到当前用户的 <code>%APPDATA%\kingsoft\wps\jsaddons</code>；合并自己的注册项，保留其他插件并备份原配置。</li><li>重新打开 WPS 文字，在顶部找到“智能修订”，点击“Windows 自检”。自检会新建示例，验证修订、接受、拒绝和撤销，结束后关闭示例且不保存。</li></ol>
+<p><strong>自检会替换剪贴板中的内容。</strong>完成后重新复制需要粘贴的新段落。通过文字检查后可以使用仅文字粘贴；格式检查也通过后，才启用含格式粘贴。自检失败时可在“查看诊断记录”复制结果，不包含你的论文内容。</p>
+<h2>先做一个小测试</h2><ol>
+<li>运行“Windows 自检”，确认文字检查和格式检查都通过。第一次自检建议在新建空白文档中启动。</li>
+<li>新建测试文档，输入“本项目拟于2026年启动。”作为原段落；另写“本项目计划于2027年启动。”，把其中几个字加粗、斜体或标为黄色高亮。</li>
+<li>复制新段落，选中完整原段落，点击“含格式智能粘贴”。检查相同文字是否保留、改字与格式是否呈现修订。</li>
+<li>在测试文档的 WPS“审阅”中尝试接受、拒绝修订，或用 <code>Ctrl+Z</code> 撤销。确认结果符合预期，再用于论文。</li></ol>
+<h2>怎么粘贴</h2><ol><li>在 WPS 或其他来源复制新段落。要保留加粗，来源必须真的带加粗格式，纯文字里的 <code>**星号**</code>不会自动转换。</li><li>选中原稿中的一段正文，点击 <strong>含格式智能粘贴</strong>。相同文字保留，增删和已支持的格式变化写成原生修订。</li><li>只改文字、沿用原稿排版时，点击 <strong>仅文字粘贴</strong>。Windows 用 <code>Ctrl+Z</code> 撤销整次操作，<code>Ctrl+S</code> 保存。普通 <code>Ctrl+V</code> 不会被接管。</li></ol>
+<p>快捷键使用独立辅助程序。先完成自检，再点击“开启快捷键”。含格式：Ctrl+Alt+Shift+V；仅文字：Ctrl+Alt+Shift+B。托盘菜单可切换备用 F9/F10 组合或退出。Windows 实际快捷键仍待实机验证。详见 docs/SHORTCUTS.md。</p>
+<h2>格式、修订和保存</h2>
+<p>当前包含字体、字号、加粗、斜体、普通下划线、字色、删除线、上下标、普通 RGB 纯色底纹，以及已验证的 15 种标准高亮颜色的添加、换色和取消。白色高亮未通过当前原生接口验证；白色底纹可以使用。图案底纹和主题色底纹暂不支持。</p>
+<p>复制段落对齐、缩进等段落格式时，应连同来源段落标记复制；加粗、斜体、高亮等字符格式无需段落标记。完整选中目标段落时会处理已支持的段落格式。来源和目标一致的未映射段落属性会保留；不一致时提示停止。</p>
+<p>插件没有额外的“原生修订开关”。日常手工修订在 WPS“审阅 → 修订”中设置；智能粘贴会在一次操作内启用所需修订，完成后恢复原来的开关状态。若看不到标记，在“审阅”中检查显示修订／所有标记的设置。</p>
+<p>同一段连续改写时，以尚未接受的文字修订之前的内容为比较基础；接受修订后，接受后的文字成为新基础。对齐会重建该选区的文字修订，不保留这段各轮作者链。文档需自行保存；WPS 本身的自动保存和云同步按你已有设置运行。</p>
+<h2>更新现有版本</h2>
+<p>保存文档并退出 WPS，完整解压新版 ZIP，再运行新版 <code>install-windows.cmd</code>。安装器更新本插件注册并保留其他插件和备份。重新打开 WPS 后再运行自检；插件版本或 WPS 环境改变后，旧自检结果不会自动沿用。更新成功后运行不依赖解压目录；建议保留完整包，方便查看教程或卸载。</p>
+<h2>没有出现工具栏或自检失败</h2><p>检查是否运行的是 WPS 桌面“文字”，以及是否已正常退出并重新打开。最新版并不保证所有发行渠道都开放 JavaScript 加载项。如果当前安装包缺少这项能力或组织策略限制加载，请使用支持加载项的官方版本／联系管理员。本包不会覆盖 WPS 的 OEM 配置、修改企业策略或自动下载替换 WPS。</p>
+<p>安装批处理仅给本次 PowerShell 进程设置执行策略，不更改系统或用户的永久执行策略；组织强制策略仍然有效。若安装失败，窗口会保留错误说明。请不要通过关闭系统防护来解决。</p>
+<h3>常见提示如何处理</h3><ul>
+<li><code>Please save your documents and exit WPS…</code>：先保存并退出 WPS 文字、表格、演示，检查是否还有 WPS 文档窗口，再重试。安装器不会替你结束进程。</li>
+<li>提示文件缺失、校验失败或路径无效：重新传输完整 ZIP，再“全部解压”，不要混用不同版本文件。</li>
+<li>显示已安装，但没有“智能修订”：确认打开的是 WPS 桌面文字组件、重启 WPS，并核对当前用户是否与安装时相同；注册路径见安装窗口。</li>
+<li>自检失败：不要在正文上反复尝试。展开“查看诊断记录”，在文本框内全选复制 JSON，同时提供 WPS“关于”中的版本号和失败截图，用于排查。诊断记录不包含论文正文。</li>
+<li>提示未支持的格式或复杂结构：本次操作不会被当作成功；保留提示用于排查。“仅文字粘贴”不会带入来源的加粗、高亮等格式，不能代替富文本粘贴。</li>
+<li>提示不能确认完整恢复：停止重复操作，检查文档和撤销状态；该提示不是成功提示。</li></ul>
+<h2>范围与卸载</h2><p>一次只支持普通正文的一段。表格、公式、引用域、书签、页眉页脚、移动修订等复杂结构可能被拒绝。字偶距（Kerning）变化因组合撤销问题仍被禁止；来源中的未验证格式不会静默丢弃。自检通过不代表所有格式组合均已验证。</p>
+<p>退出 WPS 后双击 <code>uninstall-windows.cmd</code>，只撤销本插件的注册。文档、其他插件及备份保留，重新运行安装器可恢复使用。</p>
+<p class="muted">参考：<a href="https://open.wps.cn/documents/app-integration-dev/wps365/client/wpsoffice/wps-integration-mode/wps-addin-development/wps-addin-development-instructions">WPS 官方加载项部署说明</a>。文件 SHA-256 用于检查传输完整性，不是软件签名。</p></html>

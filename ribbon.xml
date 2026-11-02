@@ -1,0 +1,16 @@
+<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui" onLoad="OnSmartLoad">
+  <ribbon startFromScratch="false"><tabs><tab id="localSmartRevision" label="智能修订">
+    <group id="localSmartPasteGroup" label="对齐改写">
+      <button id="localSmartPaste" label="含格式智能粘贴" size="large" getImage="SmartGetImage" onAction="OnSmartPaste" screentip="对齐字句，并带入支持的剪贴板格式" supertip="先复制新段落，再选中原段落。修改写成原生修订；Windows 按 Ctrl+Z，Mac 按 ⌘Z 撤销。"/>
+      <button id="localSmartPlainPaste" label="仅文字粘贴" getImage="SmartGetImage" onAction="OnSmartPlainPaste" screentip="不导入来源格式，新文字继承插入位置格式"/>
+    </group>
+    <group id="localSmartGuideGroup" label="帮助与验证">
+      <button id="localSmartShortcutStop" label="停用快捷键" onAction="OnSmartShortcutStop"/>
+      <button id="localSmartShortcut" label="开启快捷键" onAction="OnSmartShortcutStart" screentip="启动仅在 WPS 前台启用的快捷键辅助程序"/>
+      <button id="localSmartCompatibility" label="本机自检" getImage="SmartGetImage" onAction="OnSmartCompatibility" screentip="在新建测试文档中验证当前 WPS 的修订与撤销接口"/>
+      <button id="localSmartHelp" label="使用说明" getImage="SmartGetImage" onAction="OnSmartHelp"/>
+      <button id="localSmartTest" label="运行示例" getImage="SmartGetImage" onAction="OnSmartTest" screentip="新建演示文档，不修改当前文件"/>
+      <button id="localSmartTestResults" label="测试结果" getImage="SmartGetImage" onAction="OnSmartTestResults" screentip="查看实测场景、结果与已知限制"/>
+    </group>
+  </tab></tabs></ribbon>
+</customUI>

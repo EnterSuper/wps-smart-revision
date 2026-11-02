@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'"><title>本机自检</title><link rel="stylesheet" href="panel.css"><link rel="stylesheet" href="compatibility.css"><script src="host.js"></script><script src="vendor/diff-browser.js"></script><script src="plan.js"></script><script src="rich.js"></script><script src="live.js"></script><script src="compatibility.js"></script><script defer src="compatibility-ui.js"></script></head><body><main>
+<header class="masthead"><span class="app-icon"><img src="images/report.svg" width="28" height="28" alt=""></span><div><h1>本机自检</h1><p>在新建示例里，确认修订与撤销可用</p></div></header>
+<p>首次在 Windows 使用前，先运行一次自检。通过文字检查后启用仅文字粘贴；格式检查也通过后，才启用含格式粘贴。</p>
+<p class="notice">自检会临时新建并关闭示例文档，不保存文件，不编辑原稿。<strong>剪贴板会被替换为测试内容</strong>，完成后请重新复制你要粘贴的段落。</p>
+<button id="run-check" class="primary" type="button">开始本机自检</button>
+<p id="check-status" aria-live="polite">尚未运行</p><ul id="check-cases"></ul>
+<details><summary>查看诊断记录</summary><p class="quiet">记录只包含环境和测试结果。可选中后复制给我排查，不包含你的论文内容。</p><textarea id="check-json" readonly spellcheck="false" aria-label="自检 JSON 记录"></textarea></details>
+<p class="quiet">自检通过仅代表这些示例在本机通过，不代表所有格式和文档都已覆盖。字偶距变更和复杂结构等现有限制仍然适用。</p>
+</main></body></html>
