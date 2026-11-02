@@ -12,6 +12,7 @@ def build():
     names=['README.md','LICENSE','CONTRIBUTING.md','install.py','安装或更新.command','ribbon.xml','host.js','main.js','js/main.js','live.js','rich.js','plan.js','shortcuts.js','panel.html','panel.css','panel.js','compatibility.html','compatibility.css','compatibility.js','compatibility-ui.js','qa/test-report.html','vendor/diff-browser.js','vendor/LICENSE-jsdiff']
     names += [str(p.relative_to(ROOT)) for p in (ROOT/'images').glob('*.svg')]
     names += [str(p.relative_to(ROOT)) for p in (ROOT/'docs').glob('*.md')]
+    names += [str(p.relative_to(ROOT)) for p in (ROOT/'docs/media').glob('*') if p.suffix in ('.png','.gif')]
     names += [str(p.relative_to(ROOT)) for p in (ROOT/'shortcuts/SmartRevisionKeys.app').rglob('*') if p.is_file()]
     with zipfile.ZipFile(archive,'w',compression=zipfile.ZIP_DEFLATED) as z:
         for n in sorted(names):z.write(ROOT/n,folder+'/'+n)

@@ -16,10 +16,12 @@ def export(target):
     names += [str(p.relative_to(ROOT)) for p in (ROOT/'windows').glob('*') if p.is_file()]
     names += [str(p.relative_to(ROOT)) for p in (ROOT/'docs').glob('*.md') if p.name!='PUBLIC_README.md']
     names += [str(p.relative_to(ROOT)) for p in (ROOT/'.github').rglob('*') if p.is_file()]
+    names += [str(p.relative_to(ROOT)) for p in (ROOT/'docs/media').glob('*') if p.is_file()]
     for name in names:
         p=target/name;p.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/name,p)
-    shutil.copy2(ROOT/'docs/PUBLIC_README.md',target/'README.md')
-    (target/'docs/PUBLIC_README.md').write_bytes((ROOT/'docs/PUBLIC_README.md').read_bytes())
+    readme=ROOT/'docs/PUBLIC_README.md'
+    if not readme.exists():readme=ROOT/'README.md'
+    shutil.copy2(readme,target/'README.md')
     (target/'qa').mkdir(exist_ok=True);shutil.copy2(ROOT/'windows/test-report.html',target/'qa/test-report.html')
     return target
 if __name__=='__main__':
