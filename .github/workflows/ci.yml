@@ -23,7 +23,9 @@ jobs:
       - shell: powershell
         run: |
           $compiler=Join-Path ([Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory()) 'csc.exe'
-          & $compiler /nologo /codepage:65001 /target:winexe /out:shortcuts/SmartRevisionKeys.exe /reference:System.Windows.Forms.dll /reference:System.Drawing.dll /reference:System.Web.Extensions.dll shortcuts/SmartRevisionKeys.cs
+          $source=Join-Path $PWD 'shortcuts\SmartRevisionKeys.cs'
+          $output=Join-Path $PWD 'shortcuts\SmartRevisionKeys.exe'
+          & $compiler /nologo /codepage:65001 /target:winexe "/out:$output" /reference:System.Windows.Forms.dll /reference:System.Drawing.dll /reference:System.Web.Extensions.dll $source
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
   mac-build:
     runs-on: macos-latest
